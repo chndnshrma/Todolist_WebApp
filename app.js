@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -26,11 +27,11 @@ const item3 = new Item({
 
 async function main(){
     try{
-        await mongoose.connect("mongodb://localhost:27017/todolistDB");
+        await mongoose.connect(process.env.MONGODB_URI);
         console.log("Connection Established!");
 
     }catch(err){
-        console.log("Connection Error!",err);
+        console.log("Connection Error!",err.message);
     }
 }
 main();
@@ -160,6 +161,6 @@ app.get("/about",function(req, res){
     res.render("about");
 })
 
-app.listen(process.env.PORT || 3000, function(){
-    console.log("Server running on port 3000...");
+app.listen(process.env.PORT, function(){
+    console.log("Server is live...");
 });
