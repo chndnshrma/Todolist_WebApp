@@ -27,7 +27,7 @@ const item3 = new Item({
 
 async function main(){
     try{
-        await mongoose.connect(process.env.MONGODB_URI);
+        await mongoose.connect("mongodb+srv://chndnsharma:helloworld0000@todolist-test.peqhycw.mongodb.net/");
         console.log("Connection Established!");
 
     }catch(err){
